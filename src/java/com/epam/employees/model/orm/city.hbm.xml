@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd//hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class batch-size="100" name="com.epam.employees.model.City" table="CITY">
+        <id column="ID" name="id" type="long">
+            <generator class="sequence">
+                <param name="sequence">CITY_SEQ</param>
+            </generator>
+        </id>
+    
+        <property name="title" column="TITLE"/>
+  
+        <many-to-one name="country"  
+                     class="com.epam.employees.model.Country" 	
+                     column="COUNTRY_ID"
+                     not-null="true" 
+                     outer-join="true"/>
+    
+    </class>
+        
+</hibernate-mapping>

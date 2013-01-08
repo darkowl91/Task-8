@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
+        <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
+        <property name="hibernate.connection.username">EMPLOYEES</property>
+        <property name="hibernate.connection.password">5832558</property>
+          <property name="hibernate.default_schema">EMPLOYEES</property>
+        <!--<property name="hbm2ddl.auto">create</property>-->
+        <property name="show_sql">true</property>
+        <property name="hibernate.connection.pool_size">5</property>
+        <property name="current_session_context_class">thread</property>
+        <mapping resource="com/epam/employees/model/orm/employee.hbm.xml"/>
+        <mapping resource="com/epam/employees/model/orm/work.hbm.xml"/>
+        <mapping resource="com/epam/employees/model/orm/company.hbm.xml"/>
+        <mapping resource="com/epam/employees/model/orm/country.hbm.xml"/>
+        <mapping resource="com/epam/employees/model/orm/address.hbm.xml"/>
+        <mapping resource="com/epam/employees/model/orm/city.hbm.xml"/>
+        <mapping resource="com/epam/employees/model/orm/position.hbm.xml"/>
+        <mapping resource="com/epam/employees/model/orm/office.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

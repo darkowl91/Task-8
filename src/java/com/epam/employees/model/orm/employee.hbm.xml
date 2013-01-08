@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd//hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.epam.employees.model.Employee" table="EMPLOYEE">
+
+        <id column="ID" name="id" type="long">
+            <generator class="sequence">
+                <param name="sequence">EMPLOYEE_SEQ</param>
+            </generator>
+        </id>
+ 
+        <property name="firstName" column="FIRSTNAME"/>
+        <property name="lastName" column="LASTNAME"/>  
+    
+        <set name="works"
+             batch-size="100"
+             lazy="false">
+            <key column="EMPLOYEE_ID"/>
+            <one-to-many class="com.epam.employees.model.Work"/>
+        </set>
+        
+        <many-to-one column="ID" 
+                     name="address" 
+                     class="com.epam.employees.model.Address" 
+                     not-null="true" 
+                     outer-join="true" 
+                     unique="true"
+                     insert="false" 
+                     update="false"
+                     lazy="false"/>
+
+    </class>
+    <query name="employeeList">
+	<![CDATA[FROM Employee as employee order by employee.id]]>
+    </query>
+</hibernate-mapping>

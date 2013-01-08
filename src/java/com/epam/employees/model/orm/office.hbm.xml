@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd//hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class batch-size="100" name="com.epam.employees.model.Office" table="OFFICE">
+        <id name="id" column="ID" type="long">
+            <generator class="sequence">
+                <param name="sequence">OFFICE_SEQ</param>
+            </generator>
+        </id>
+        
+        <many-to-one name="company"
+                     column="COMPANY_ID" 
+                     class="com.epam.employees.model.Company" 
+                     not-null="true" 
+                     fetch="join"/> 
+                     
+        <many-to-one column="ADDRESS_ID" 
+                     name="address" 
+                     class="com.epam.employees.model.Address" 
+                     not-null="true" 
+                     fetch="join"/>        
+        
+        <property name="countOfEmployees" lazy="false">
+            <formula>(SELECT COUNT(*) FROM EMPLOYEES.WORK WHERE WORK.OFFICE_ID=ID)</formula> 
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd//hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class batch-size="100"
+           name="com.epam.employees.model.Work" 
+           table="WORK">
+        <id column="ID" name="id" type="long">
+            <generator class="sequence">
+                <param name="sequence">COMPANY_EMPLOYEE_SEQ</param>
+            </generator>
+        </id>
+        
+        <many-to-one name="office"
+                     class="com.epam.employees.model.Office"
+                     column="OFFICE_ID"
+                     not-null="true"
+                     fetch="join"/>
+                     
+        <many-to-one name="position"  
+                     class="com.epam.employees.model.Position" 	
+                     column="POSITION_ID"
+                     outer-join="true"
+                     not-null="true"/>
+    </class>
+</hibernate-mapping>
