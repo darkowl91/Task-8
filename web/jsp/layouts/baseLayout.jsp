@@ -13,6 +13,11 @@
         <title>Employees</title>
         <!-- STYLES -->
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="css/table-fixed-header.css"/>
+        <!-- CSS and JS for table fixed header -->
+        <script src="js/jquery-1.7.2.min.js"></script>
+        <link rel="css/stylesheet" href="table-fixed-header.css">
+        <script src="js/table-fixed-header.js"></script>
     </head>
     <body>
         <tiles:insert attribute="header"/>

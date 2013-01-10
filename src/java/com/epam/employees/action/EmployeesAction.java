@@ -19,7 +19,7 @@ import org.apache.struts.actions.MappingDispatchAction;
  *
  * @author Owl
  */
-public class EmployeesAction extends MappingDispatchAction {
+public final class EmployeesAction extends MappingDispatchAction {
     
     private EmployeeDAO employeeDAO;
     

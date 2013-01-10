@@ -12,37 +12,44 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<table width="100%" border="1">   
-    <c:forEach var="employee" items="${EmployeesForm.employees}">
-        <tr>
-            <th colspan="3" align="center"><bean:message key="content.text.name"/></th>
-            <th colspan="5" align="center"><bean:message key="content.text.company"/></th>
-        </tr>
-        <tr align="center" >
-            <th ><bean:message key="content.text.firstname"/></th>
+<table class="table table-fixed-header" >   
+    <thead class="header">
+        <tr >
+            <th><bean:message key="content.text.firstname"/></th>
             <th><bean:message key="content.text.lastname"/></th>
             <th><bean:message key="content.text.address"/></th>
             <th><bean:message key="content.text.companyname"/></th>
             <th><bean:message key="content.text.city"/></th>
             <th><bean:message key="content.text.country"/></th>
-            <th ><bean:message key="content.text.count"/></th>
+            <th><bean:message key="content.text.count"/></th>
             <th><bean:message key="content.text.position"/></th>
         <tr/>
-        <c:set var="hight" value="${fn:length(employee.works)}"/>
-        <tr align="center" bordercolor="WHITE">
-            <td rowspan="${hight + 1}" ><c:out value="${employee.firstName}"/></td>
-            <td rowspan="${hight + 1}" ><c:out value="${employee.lastName}"/></td>
-            <c:set var="address" value="${employee.address}"/>
-            <td rowspan="${hight + 1}"><c:out value="${address.city.country.title}, ${address.city.title}, ${address.street}, ${address.building}-${address.room}"/></td>
-        </tr>
-        <c:forEach var="work" items="${employee.works}">
-            <tr align="center" bordercolor="WHITE">
-                <td><c:out value="${work.office.company.title}"/></td>
-                <td><c:out value="${work.office.address.city.title}"/></td>
-                <td><c:out value="${work.office.address.city.country.title}"/></td>
-                <td><c:out value="${work.office.countOfEmployees}"/></td>
-                <td><c:out value="${work.position.title}"/></td>
+    </thead>
+    <!--make the header fixed on scroll-->
+    <script language="javascript" type="text/javascript" >
+        $(document).ready(function(){
+            $('.table-fixed-header').fixedHeader();
+        });
+    </script>
+    <!---->
+    <tbody>
+        <c:forEach var="employee" items="${EmployeesForm.employees}">
+            <c:set var="hight" value="${fn:length(employee.works)}"/>
+            <tr>
+                <td rowspan="${hight + 1}" ><c:out value="${employee.firstName}"/></td>
+                <td rowspan="${hight + 1}" ><c:out value="${employee.lastName}"/></td>
+                <c:set var="address" value="${employee.address}"/>
+                <td rowspan="${hight + 1}"><c:out value="${address.city.country.title}, ${address.city.title}, ${address.building}-${address.room}"/></td>
             </tr>
+            <c:forEach var="work" items="${employee.works}">
+                <tr>
+                    <td><c:out value="${work.office.company.title}"/></td>
+                    <td><c:out value="${work.office.address.city.title}"/></td>
+                    <td><c:out value="${work.office.address.city.country.title}"/></td>
+                    <td><c:out value="${work.office.countOfEmployees}"/></td>
+                    <td><c:out value="${work.position.title}"/></td>
+                </tr>
+            </c:forEach>
         </c:forEach>
-    </c:forEach>
+    </tbody>
 </table>    

@@ -17,7 +17,7 @@ import org.apache.struts.action.ActionForm;
  *
  * @author Owl
  */
-public class EmployeesForm extends ActionForm {
+public final class EmployeesForm extends ActionForm {
 
     private List<Address> addresses;
     private List<City> cities;
