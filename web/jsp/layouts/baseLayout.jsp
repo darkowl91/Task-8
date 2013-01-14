@@ -23,9 +23,9 @@
         <tiles:insert attribute="header"/>
         <div class="container">
             <div class="hero-unit">
-                <tiles:insert attribute="content"/>
+                    <tiles:insert attribute="content"/>
+                </div>
             </div>
-        </div>
         <tiles:insert attribute="footer"/>
     </body>
 </html>

@@ -13,14 +13,26 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container-fluid">
-            <html:link href="EmployeeList.do" styleClass="brand">
-                <bean:message key="header.title"/>
-            </html:link>
-            <p class="text-success">
-                <bean:message key="header.time"/>
-                ${EmployeesForm.time}
-                <bean:message key="header.time.ms"/>
-            </p>
+            <ul class="nav">
+                <li class="active">
+                    <html:link href="EmployeeList.do" styleClass="brand">
+                        <bean:message key="header.title"/>
+                    </html:link>
+                </li>
+                <p class="text-success">
+                    <bean:message key="header.time"/>
+                    ${EmployeesForm.time}
+                    <bean:message key="header.time.ms"/>
+                </p>
+            </ul>
+            <form class="navbar-form pull-right">
+                <span class="help-inline ">Page size:</span>
+                <input class="span2" type="text">
+                <span class="help-inline ">Page</span>
+                <input class="span2 " type="text">
+                <span class="help-inline ">of 0</span>
+                <button type="submit" class="btn"><bean:message key="header.go"/></button>
+            </form>
         </div>
     </div>
 </div>

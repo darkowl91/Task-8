@@ -20,6 +20,7 @@ public class EmployeeDAO implements IEmployeeDAO<Employee> {
 
     private static final int FIRST_RECORD_NUMBER = 1;
     private static final int LAST_RECORD_NUMBER = 100;
+    private static final String LIST ="employeeList";
 
     @Override
     public List<Employee> getAll() {
@@ -29,7 +30,7 @@ public class EmployeeDAO implements IEmployeeDAO<Employee> {
         try {
             transaction = session.getTransaction();
             transaction.begin();
-            Query query = session.getNamedQuery("employeeList");
+            Query query = session.getNamedQuery(LIST);
             query.setCacheable(true);
             query.setFirstResult(FIRST_RECORD_NUMBER);
             query.setMaxResults(LAST_RECORD_NUMBER);
