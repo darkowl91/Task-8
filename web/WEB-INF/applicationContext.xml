@@ -20,7 +20,7 @@
     p:password="${jdbc.password}" /-->
 
     <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
-    <bean id="DAO" class="com.epam.employees.dao.EmployeeDAO">
+    <bean id="DAO" class="com.epam.employees.dao.EmployeeDAOHibernate">
     </bean>
     
     <bean name="/EmployeeList"

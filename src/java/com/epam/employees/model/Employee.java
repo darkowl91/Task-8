@@ -10,41 +10,42 @@ import java.util.Set;
  *
  * @author Owl
  */
-public class Employee extends Entity{
-     private String firstName;
+public class Employee extends Entity {
+
+    private String firstName;
     private String lastName;
     private Address address;
     private Set works;
-    
-    public void setFirstName(String firstName){
+
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-    
-    public String getFirstName(){
+
+    public String getFirstName() {
         return this.firstName;
     }
-    
-        public void setAddress(Address address){
+
+    public void setAddress(Address address) {
         this.address = address;
     }
-    
-    public Address getAddress(){
+
+    public Address getAddress() {
         return this.address;
     }
-    
-    public void setLastName(String lastName){
+
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    
-    public String getLastName(){
+
+    public String getLastName() {
         return this.lastName;
     }
-    
-    public void setWorks(Set works){
+
+    public void setWorks(Set works) {
         this.works = works;
     }
-    
-    public Set getWorks(){
+
+    public Set getWorks() {
         return this.works;
     }
 }

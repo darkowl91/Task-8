@@ -4,11 +4,13 @@
  */
 package com.epam.employees.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Owl
  */
-public class Entity {
+public class Entity implements Serializable{
 
     private long id;
 

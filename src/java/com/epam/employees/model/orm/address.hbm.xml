@@ -17,7 +17,6 @@
                      class="com.epam.employees.model.City" 
                      not-null="true"  
                      outer-join="true" />
-    
     </class>
   
 </hibernate-mapping>

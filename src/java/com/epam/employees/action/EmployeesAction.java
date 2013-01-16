@@ -4,7 +4,7 @@
  */
 package com.epam.employees.action;
 
-import com.epam.employees.dao.EmployeeDAO;
+import com.epam.employees.dao.EmployeeDAOHibernate;
 import com.epam.employees.form.EmployeesForm;
 import com.epam.employees.model.Employee;
 import java.util.List;
@@ -21,9 +21,9 @@ import org.apache.struts.actions.MappingDispatchAction;
  */
 public final class EmployeesAction extends MappingDispatchAction {
     
-    private EmployeeDAO employeeDAO;
+    private EmployeeDAOHibernate employeeDAO;
     
-    public void setEmployeeDAO(EmployeeDAO employeeDAO) {
+    public void setEmployeeDAO(EmployeeDAOHibernate employeeDAO) {
         this.employeeDAO = employeeDAO;
     }
     /* forward name="success" path="" */

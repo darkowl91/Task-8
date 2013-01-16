@@ -15,7 +15,6 @@
                      column="COUNTRY_ID"
                      not-null="true" 
                      outer-join="true"/>
-    
     </class>
         
 </hibernate-mapping>
