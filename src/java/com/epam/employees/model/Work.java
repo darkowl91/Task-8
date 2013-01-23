@@ -8,7 +8,7 @@ package com.epam.employees.model;
  *
  * @author Owl
  */
-public class Work extends Entity {
+public class Work extends BaseEntity {
 
     private Office office;
     private Employee employee;

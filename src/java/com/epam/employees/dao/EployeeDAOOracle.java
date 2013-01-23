@@ -4,17 +4,17 @@
  */
 package com.epam.employees.dao;
 
-import com.epam.employees.model.Entity;
+import com.epam.employees.model.BaseEntity;
 import java.util.List;
 
 /**
  *
  * @author Nickolay_Petrash
  */
-public class EployeeDAOOracle implements IEmployeeDAO<Entity> {
+public class EployeeDAOOracle implements IEmployeeDAO<BaseEntity> {
     
     @Override
-    public List<Entity> getAll() {
+    public List<BaseEntity> getRecords(int firstRecNumber, int lastRecNumber) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

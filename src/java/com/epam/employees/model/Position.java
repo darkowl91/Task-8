@@ -8,7 +8,7 @@ package com.epam.employees.model;
  *
  * @author Owl
  */
-public class Position extends Entity {
+public class Position extends BaseEntity {
 
     private String title;
 

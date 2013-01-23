@@ -4,11 +4,15 @@
  */
 package com.epam.employees.model;
 
+import javax.persistence.Column;
+import javax.persistence.Table;
+
 /**
  *
  * @author Owl
  */
-public class Country extends Entity {
+@Table(name = "COUNTRY")
+public class Country extends BaseEntity {
 
     private String title;
 
@@ -16,6 +20,7 @@ public class Country extends Entity {
         this.title = title;
     }
 
+    @Column(name = "TITLE")
     public String getTitle() {
         return this.title;
     }

@@ -18,12 +18,10 @@ import org.hibernate.Transaction;
  */
 public class EmployeeDAOHibernate implements IEmployeeDAO<Employee> {
 
-    private static final int FIRST_RECORD_NUMBER = 1;
-    private static final int LAST_RECORD_NUMBER = 100;
     private static final String LIST ="employeeList";
 
     @Override
-    public List<Employee> getAll() {
+    public List<Employee> getRecords(int firstRecNumber, int lastRecNumber) {
         Session session = HibernateUtil.getSession();
         List<Employee> employees;
         Transaction transaction = null;
@@ -32,8 +30,8 @@ public class EmployeeDAOHibernate implements IEmployeeDAO<Employee> {
             transaction.begin();
             Query query = session.getNamedQuery(LIST);
             query.setCacheable(true);
-            query.setFirstResult(FIRST_RECORD_NUMBER);
-            query.setMaxResults(LAST_RECORD_NUMBER);
+            query.setFirstResult(firstRecNumber);
+            query.setMaxResults(lastRecNumber);
             employees = query.list();
             transaction.commit();
             return employees;

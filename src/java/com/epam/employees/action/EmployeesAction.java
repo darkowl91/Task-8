@@ -38,7 +38,7 @@ public final class EmployeesAction extends MappingDispatchAction {
             throws Exception {
         EmployeesForm employeeForm = (EmployeesForm) form;
         long beginTime = System.currentTimeMillis();
-        List<Employee> employeesList = (List<Employee>) employeeDAO.getAll();
+        List<Employee> employeesList = (List<Employee>) employeeDAO.getRecords(1,100);
         long endTime = System.currentTimeMillis();
         long time = endTime - beginTime;
         employeeForm.setTime(time);

@@ -4,14 +4,14 @@
  */
 package com.epam.employees.dao;
 
-import com.epam.employees.model.Entity;
+import com.epam.employees.model.BaseEntity;
 import java.util.List;
 
 /**
  *
  * @author Owl
  */
-public interface IEmployeeDAO<T extends Entity> {
+public interface IEmployeeDAO<T extends BaseEntity> {
 
-    public List<T> getAll();
+    public List<T> getRecords(int firstRecNumber, int lastRecNumber);
 }

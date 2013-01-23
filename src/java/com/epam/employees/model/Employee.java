@@ -10,7 +10,7 @@ import java.util.Set;
  *
  * @author Owl
  */
-public class Employee extends Entity {
+public class Employee extends BaseEntity {
 
     private String firstName;
     private String lastName;
