@@ -4,14 +4,18 @@
  */
 package com.epam.employees.model;
 
+import com.epam.employees.constants.DBConstants;
 import java.util.Set;
 import javax.persistence.*;
+import org.hibernate.annotations.BatchSize;
 
 /**
  *
  * @author Owl
  */
 @Entity
+@BatchSize(size = 100)
+@Table(name = DBConstants.ADDRESS_TABLE)
 public class Address extends BaseEntity {
 
     private String street;
@@ -24,7 +28,7 @@ public class Address extends BaseEntity {
         this.street = street;
     }
 
-    @Column(name = "STREET")
+    @Column(name = DBConstants.ADDRESS_STREET)
     public String getStreet() {
         return street;
     }
@@ -33,7 +37,7 @@ public class Address extends BaseEntity {
         this.building = building;
     }
 
-    @Column(name = "BUILDING")
+    @Column(name = DBConstants.ADDRESS_BUILDING)
     public String getBuilding() {
         return building;
     }
@@ -42,7 +46,7 @@ public class Address extends BaseEntity {
         this.room = room;
     }
 
-    @Column(name = "ROOM")
+    @Column(name = DBConstants.ADDRESS_ROOM)
     public String getRoom() {
         return room;
     }
@@ -51,16 +55,17 @@ public class Address extends BaseEntity {
         this.city = city;
     }
 
-    @ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "CITY_ID", nullable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = DBConstants.CITY_ID)
     public City getCity() {
         return city;
     }
-    
+
     public void setCompanies(Set<Company> companies) {
         this.companies = companies;
     }
 
+    @OneToMany
     public Set<Company> getCompanies() {
         return this.companies;
     }

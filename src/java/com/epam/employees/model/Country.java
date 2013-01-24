@@ -4,14 +4,17 @@
  */
 package com.epam.employees.model;
 
+import com.epam.employees.constants.DBConstants;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
  *
  * @author Owl
  */
-@Table(name = "COUNTRY")
+@Entity
+@Table(name = DBConstants.COUNTRY_TABLE)
 public class Country extends BaseEntity {
 
     private String title;
@@ -20,7 +23,7 @@ public class Country extends BaseEntity {
         this.title = title;
     }
 
-    @Column(name = "TITLE")
+    @Column(name = DBConstants.TITLE)
     public String getTitle() {
         return this.title;
     }

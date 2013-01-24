@@ -4,8 +4,9 @@
  */
 package com.epam.employees.model;
 
-import javax.persistence.CascadeType;
+import com.epam.employees.constants.DBConstants;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -14,7 +15,8 @@ import javax.persistence.Table;
  *
  * @author Owl
  */
-@Table(name = "CITY")
+@Entity
+@Table(name = DBConstants.CITY_TABLE)
 public class City extends BaseEntity {
 
     private String title;
@@ -24,7 +26,7 @@ public class City extends BaseEntity {
         this.title = title;
     }
 
-    @Column(name = "TITLE")
+    @Column(name = DBConstants.TITLE)
     public String getTitle() {
         return this.title;
     }
@@ -33,8 +35,8 @@ public class City extends BaseEntity {
         this.country = country;
     }
 
-    @ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "COUNTRY_ID", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = DBConstants.COUNTRY_ID)
     public Country getCountry() {
         return this.country;
     }
