@@ -21,7 +21,6 @@ import javax.persistence.Table;
 public class Work extends BaseEntity {
 
     private Office office;
-    private Employee employee;
     private Position position;
     private long idEmployee;
 
@@ -35,14 +34,14 @@ public class Work extends BaseEntity {
         return this.office;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    @ManyToOne
-    public Employee getEmployee() {
-        return this.employee;
-    }
+//    public void setEmployee(Employee employee) {
+//        this.employee = employee;
+//    }
+//
+//    @ManyToOne
+//    public Employee getEmployee() {
+//        return this.employee;
+//    }
 
     public void setPosition(Position position) {
         this.position = position;

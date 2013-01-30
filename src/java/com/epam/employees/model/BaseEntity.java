@@ -19,14 +19,15 @@ import javax.persistence.MappedSuperclass;
 public class BaseEntity implements Serializable {
 
     private long id;
+      private static final long serialVersionUID = 2630114410283439578L;
 
     public void setId(long id) {
         this.id = id;
     }
 
     @Id
+   @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
     public long getId() {
         return this.id;
     }

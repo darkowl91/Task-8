@@ -25,14 +25,22 @@
                     <bean:message key="header.time.ms"/>
                 </p>
             </ul>
-            <form class="navbar-form pull-right">
-                <span class="help-inline ">Page size:</span>
-                <input class="span2" type="text">
-                <span class="help-inline ">Page</span>
-                <input class="span2 " type="text">
-                <span class="help-inline ">of 0</span>
-                <button type="submit" class="btn"><bean:message key="header.go"/></button>
-            </form>
+            <html:form action="EmployeeList.do" styleClass="navbar-form pull-right">
+                <span class="help-inline ">
+                    <bean:message key="header.size"/>
+                </span>
+                <html:text name="EmployeesForm" property="size" styleClass="span2"/>
+                <span class="help-inline ">
+                    <bean:message key="header.page"/>
+                </span>
+                <html:text name="EmployeesForm" property="pageNumber" styleClass="span2"/>
+                <span class="help-inline ">
+                    <bean:message key="header.of"/>
+                </span>
+                <html:submit styleClass="btn">
+                    <bean:message key="header.go"/>
+                </html:submit>
+            </html:form>            
         </div>
     </div>
 </div>

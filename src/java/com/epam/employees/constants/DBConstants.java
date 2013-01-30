@@ -12,6 +12,7 @@ public final class DBConstants {
 
     private DBConstants() {
     }
+    
     public static final String ID = "ID";
     public static final String ADDRESS_TABLE = "ADDRESS";
     public static final String ADDRESS_STREET = "STREET";

@@ -26,6 +26,8 @@ public final class EmployeesForm extends ActionForm {
     private List<Employee> employees;
     private List<Position> positions;
     long time;
+    int size;
+    int pageNumber;
 
     public long getTime() {
         return time;
@@ -41,5 +43,21 @@ public final class EmployeesForm extends ActionForm {
 
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public int getPageNumber() {
+        return pageNumber;
+    }
+
+    public void setPageNumber(int pageNumber) {
+        this.pageNumber = pageNumber;
     }
 }
