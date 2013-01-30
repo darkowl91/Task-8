@@ -27,7 +27,7 @@ public class Employee extends BaseEntity {
     private String firstName;
     private String lastName;
     private Address address;
-    private Set works;
+    private Set<Work> works;
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -57,13 +57,13 @@ public class Employee extends BaseEntity {
         return this.lastName;
     }
 
-    public void setWorks(Set works) {
+    public void setWorks(Set<Work> works) {
         this.works = works;
     }
 
-    @OneToMany(mappedBy = DBConstants.EMPLOYEE_ID, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "idEmployee", fetch = FetchType.EAGER)
     @BatchSize(size = 100)
-    public Set getWorks() {
+    public Set<Work> getWorks() {
         return this.works;
     }
 }
