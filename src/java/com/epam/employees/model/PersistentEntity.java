@@ -18,7 +18,7 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class PersistentEntity implements Serializable {
 
-    private static final long serialVersionUID = 2630114410283439578L;
+    private static final long serialVersionUID = 1L;
     private long id;
 
     public void setId(long id) {

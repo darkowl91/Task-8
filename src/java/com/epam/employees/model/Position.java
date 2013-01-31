@@ -17,6 +17,7 @@ import javax.persistence.Table;
 @Table(name = DBConstants.POSITION_TABLE)
 public class Position extends PersistentEntity {
 
+    private static final long serialVersionUID = 1L;
     private String title;
 
     public void setTitle(String title) {

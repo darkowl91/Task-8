@@ -20,6 +20,7 @@ import org.hibernate.annotations.Formula;
 @Table(name = DBConstants.OFFICE_TABLE)
 public class Office extends PersistentEntity {
 
+    private static final long serialVersionUID = 1L;
     private Company company;
     private Address address;
     private int countOfEmployees;

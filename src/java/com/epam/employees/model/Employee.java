@@ -24,6 +24,7 @@ import org.hibernate.annotations.BatchSize;
 @Table(name = DBConstants.EMPLOYEE_TABLE)
 public class Employee extends PersistentEntity {
 
+    private static final long serialVersionUID = 1L;
     private String firstName;
     private String lastName;
     private Address address;

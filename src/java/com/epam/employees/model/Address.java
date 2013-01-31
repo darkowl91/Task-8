@@ -18,6 +18,7 @@ import org.hibernate.annotations.BatchSize;
 @Table(name = DBConstants.ADDRESS_TABLE)
 public class Address extends PersistentEntity {
 
+    private static final long serialVersionUID = 1L;
     private String street;
     private String building;
     private String room;

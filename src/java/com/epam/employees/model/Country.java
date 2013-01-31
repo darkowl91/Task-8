@@ -17,6 +17,7 @@ import javax.persistence.Table;
 @Table(name = DBConstants.COUNTRY_TABLE)
 public class Country extends PersistentEntity {
 
+    private static final long serialVersionUID = 1L;
     private String title;
 
     public void setTitle(String title) {

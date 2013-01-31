@@ -20,6 +20,7 @@ import javax.persistence.Table;
 @Table(name = DBConstants.WORK_TABLE)
 public class Work extends PersistentEntity {
 
+    private static final long serialVersionUID = 1L;
     private Office office;
     private Position position;
     private long idEmployee;
@@ -42,7 +43,6 @@ public class Work extends PersistentEntity {
 //    public Employee getEmployee() {
 //        return this.employee;
 //    }
-
     public void setPosition(Position position) {
         this.position = position;
     }
