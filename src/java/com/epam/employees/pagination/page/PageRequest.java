@@ -20,5 +20,5 @@ public interface PageRequest {
      *
      * @return the number of items of that page.
      */
-    int getpageSize();
+    int getPageSize();
 }

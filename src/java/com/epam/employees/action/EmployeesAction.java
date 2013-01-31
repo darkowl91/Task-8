@@ -6,8 +6,7 @@ package com.epam.employees.action;
 
 import com.epam.employees.dao.PersistentEntityDAO;
 import com.epam.employees.form.EmployeesForm;
-import com.epam.employees.model.Employee;
-import java.util.List;
+import com.epam.employees.pagination.page.Page;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
@@ -36,13 +35,12 @@ public final class EmployeesAction extends MappingDispatchAction {
     public ActionForward showEmployees(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
+
         EmployeesForm employeeForm = (EmployeesForm) form;
-        long beginTime = System.currentTimeMillis();
-        //List<Employee> employeesList = (List<Employee>) employeeDAO.getRecords(pageSize, pageNumber);
-        long endTime = System.currentTimeMillis();
-        long time = endTime - beginTime;
-        employeeForm.setTime(time);
-        //employeeForm.setEmployees(employeesList);
+        Page page = employeeDAO.findByNamedQuery(employeeForm.getPageRequest(), EMPLOYEESLIST, types);
+        employeeForm.setPage(page);
+
+
         return mapping.findForward(EMPLOYEESLIST);
     }
 }

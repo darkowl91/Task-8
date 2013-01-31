@@ -4,12 +4,9 @@
  */
 package com.epam.employees.form;
 
-import com.epam.employees.model.Address;
-import com.epam.employees.model.City;
-import com.epam.employees.model.Company;
-import com.epam.employees.model.Country;
 import com.epam.employees.model.Employee;
-import com.epam.employees.model.Position;
+import com.epam.employees.pagination.page.Page;
+import com.epam.employees.pagination.page.PageRequest;
 import java.util.List;
 import org.apache.struts.action.ActionForm;
 
@@ -19,24 +16,19 @@ import org.apache.struts.action.ActionForm;
  */
 public final class EmployeesForm extends ActionForm {
 
-    private List<Address> addresses;
-    private List<City> cities;
-    private List<Company> companies;
-    private List<Country> countrys;
+   
     private List<Employee> employees;
-    private List<Position> positions;
-    long time;
-    int size;
-    int pageNumber;
+    private PageRequest pageRequest;
+    private Page page;
 
-    public long getTime() {
-        return time;
+    public PageRequest getPageRequest() {
+        return pageRequest;
     }
 
-    public void setTime(long time) {
-        this.time = time;
+    public void setPageRequest(PageRequest pageRequest) {
+        this.pageRequest = pageRequest;
     }
-
+    
     public List<Employee> getEmployees() {
         return employees;
     }
@@ -45,19 +37,11 @@ public final class EmployeesForm extends ActionForm {
         this.employees = employees;
     }
 
-    public int getSize() {
-        return size;
+    public Page getPage() {
+        return page;
     }
 
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    public int getPageNumber() {
-        return pageNumber;
-    }
-
-    public void setPageNumber(int pageNumber) {
-        this.pageNumber = pageNumber;
+    public void setPage(Page page) {
+        this.page = page;
     }
 }

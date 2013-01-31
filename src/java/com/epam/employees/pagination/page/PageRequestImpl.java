@@ -38,7 +38,7 @@ public class PageRequestImpl implements PageRequest {
     }
 
     @Override
-    public int getpageSize() {
+    public int getPageSize() {
         return pageSize;
     }
 }

@@ -23,7 +23,7 @@
     <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
     
     <!--DAO HIBERNATE-->
-    <bean id="DAOHIBERNATE" class="com.epam.employees.dao.EmployeeDAOHibernate">
+    <bean id="DAOHIBERNATE" class="com.epam.employees.dao.hibernate.PersistentEntityDaoImpl">
     </bean>
     <!--DAO JPA-->
     <bean id="DAOJPA" class="com.epam.employees.dao.EmployeeDAOJPA">

@@ -7,6 +7,7 @@ package com.epam.employees.dao;
 import com.epam.employees.model.PersistentEntity;
 import com.epam.employees.pagination.page.Page;
 import com.epam.employees.pagination.page.PageRequest;
+import java.sql.SQLException;
 
 /**
  *
@@ -14,5 +15,5 @@ import com.epam.employees.pagination.page.PageRequest;
  */
 public interface PersistentEntityDAO<Entity extends PersistentEntity> {
 
-    Page<Entity> findByNamedQuery(PageRequest pageRequest, String queryName, Object... params);
+    Page<Entity> findByNamedQuery(PageRequest pageRequest, String queryName, Object... params)  throws SQLException;
 }
