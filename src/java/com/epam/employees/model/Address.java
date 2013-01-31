@@ -16,7 +16,7 @@ import org.hibernate.annotations.BatchSize;
 @Entity
 @BatchSize(size = 100)
 @Table(name = DBConstants.ADDRESS_TABLE)
-public class Address extends BaseEntity {
+public class Address extends PersistentEntity {
 
     private String street;
     private String building;

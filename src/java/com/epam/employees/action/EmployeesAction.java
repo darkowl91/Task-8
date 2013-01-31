@@ -38,11 +38,11 @@ public final class EmployeesAction extends MappingDispatchAction {
             throws Exception {
         EmployeesForm employeeForm = (EmployeesForm) form;
         long beginTime = System.currentTimeMillis();
-        List<Employee> employeesList = (List<Employee>) employeeDAO.getRecords(1, 100);
+        //List<Employee> employeesList = (List<Employee>) employeeDAO.getRecords(pageSize, pageNumber);
         long endTime = System.currentTimeMillis();
         long time = endTime - beginTime;
         employeeForm.setTime(time);
-        employeeForm.setEmployees(employeesList);
+        //employeeForm.setEmployees(employeesList);
         return mapping.findForward(EMPLOYEESLIST);
     }
 }

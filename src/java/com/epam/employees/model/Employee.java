@@ -22,7 +22,7 @@ import org.hibernate.annotations.BatchSize;
  */
 @Entity
 @Table(name = DBConstants.EMPLOYEE_TABLE)
-public class Employee extends BaseEntity {
+public class Employee extends PersistentEntity {
 
     private String firstName;
     private String lastName;

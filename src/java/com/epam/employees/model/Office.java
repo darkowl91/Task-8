@@ -18,7 +18,7 @@ import org.hibernate.annotations.Formula;
  */
 @Entity
 @Table(name = DBConstants.OFFICE_TABLE)
-public class Office extends BaseEntity {
+public class Office extends PersistentEntity {
 
     private Company company;
     private Address address;

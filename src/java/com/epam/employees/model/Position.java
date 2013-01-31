@@ -15,7 +15,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = DBConstants.POSITION_TABLE)
-public class Position extends BaseEntity {
+public class Position extends PersistentEntity {
 
     private String title;
 

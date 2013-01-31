@@ -16,17 +16,17 @@ import javax.persistence.MappedSuperclass;
  * @author Owl
  */
 @MappedSuperclass
-public class BaseEntity implements Serializable {
+public class PersistentEntity implements Serializable {
 
+    private static final long serialVersionUID = 2630114410283439578L;
     private long id;
-      private static final long serialVersionUID = 2630114410283439578L;
 
     public void setId(long id) {
         this.id = id;
     }
 
     @Id
-   @Column(name = "ID")
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {
         return this.id;

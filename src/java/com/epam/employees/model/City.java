@@ -17,7 +17,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = DBConstants.CITY_TABLE)
-public class City extends BaseEntity {
+public class City extends PersistentEntity {
 
     private String title;
     private Country country;

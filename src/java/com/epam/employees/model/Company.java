@@ -15,7 +15,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = DBConstants.COMPANY_TABLE)
-public class Company extends BaseEntity {
+public class Company extends PersistentEntity {
 
     private String title;
 

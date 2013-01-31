@@ -18,7 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = DBConstants.WORK_TABLE)
-public class Work extends BaseEntity {
+public class Work extends PersistentEntity {
 
     private Office office;
     private Position position;
