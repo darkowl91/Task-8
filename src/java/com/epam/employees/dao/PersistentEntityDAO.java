@@ -12,7 +12,7 @@ import com.epam.employees.pagination.page.PageRequest;
  *
  * @author Owl
  */
-public interface EmployeeDAO<Entity extends PersistentEntity> {
+public interface PersistentEntityDAO<Entity extends PersistentEntity> {
 
     Page<Entity> findByNamedQuery(PageRequest pageRequest, String queryName, Object... params);
 }
