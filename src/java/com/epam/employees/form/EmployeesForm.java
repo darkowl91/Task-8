@@ -15,7 +15,7 @@ import org.apache.struts.action.ActionForm;
  */
 public final class EmployeesForm extends ActionForm {
     private static final long serialVersionUID = 1L;
-    private PageRequest pageRequest = new PageRequestImpl();
+    private PageRequest pageRequest = new PageRequestImpl(1,10);
     private Page page;
 
     public PageRequest getPageRequest() {

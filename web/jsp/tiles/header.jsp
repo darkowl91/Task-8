@@ -20,23 +20,23 @@
                     </html:link>
                 </li>
             </ul>
-                
+
             <html:form action="EmployeeList.do" styleClass="navbar-form pull-right">
-                <span class="help-inline ">
-                    <bean:message key="header.size"/>
-                </span>
-                <html:text name="EmployeesForm" property="pageRequest.pageSize" styleClass="span2"/>
-                <span class="help-inline ">
-                    <bean:message key="header.page"/>
-                </span>
-                <html:text name="EmployeesForm" property="pageRequest.pageNumber" styleClass="span2"/>
-                <span class="help-inline ">
-                    <bean:message key="header.of"/>
-                </span>
-                <html:submit styleClass="btn">
-                    <bean:message key="header.go"/>
-                </html:submit>
-            </html:form>            
+                    <span class="help-inline ">
+                        <bean:message key="header.size"/>
+                    </span>
+                    <html:text name="EmployeesForm" property="pageRequest.pageSize" styleClass="span2"/>
+                    <span class="help-inline ">
+                        <bean:message key="header.page"/>
+                    </span>
+                    <html:text name="EmployeesForm" property="pageRequest.pageNumber" styleClass="span2"/>
+                    <span class="help-inline ">
+                        <bean:message key="header.of"/>
+                    </span>
+                    <html:submit styleClass="btn">
+                        <bean:message key="header.go"/>
+                    </html:submit>
+                </html:form>            
+            </div>
         </div>
     </div>
-</div>

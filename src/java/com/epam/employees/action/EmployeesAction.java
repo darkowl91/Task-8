@@ -7,6 +7,7 @@ package com.epam.employees.action;
 import com.epam.employees.dao.PersistentEntityDAO;
 import com.epam.employees.form.EmployeesForm;
 import com.epam.employees.pagination.page.Page;
+import com.epam.employees.pagination.page.PageRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
@@ -38,7 +39,7 @@ public final class EmployeesAction extends MappingDispatchAction {
             throws Exception {
 
         EmployeesForm employeeForm = (EmployeesForm) form;
-        
+        PageRequest pageRequest = employeeForm.getPageRequest();
         Page page = employeeDAO.findByNamedQuery(employeeForm.getPageRequest(),  EMPLOYEESLIST);
        
         employeeForm.setPage(page);
