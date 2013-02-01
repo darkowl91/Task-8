@@ -38,7 +38,9 @@ public final class EmployeesAction extends MappingDispatchAction {
             throws Exception {
 
         EmployeesForm employeeForm = (EmployeesForm) form;
-        Page page = employeeDAO.findByNamedQuery(employeeForm.getPageRequest(), EMPLOYEESLIST);
+        
+        Page page = employeeDAO.findByNamedQuery(employeeForm.getPageRequest(),  EMPLOYEESLIST);
+       
         employeeForm.setPage(page);
         return mapping.findForward(EMPLOYEE);
     }

@@ -32,7 +32,6 @@
                 <html:text name="EmployeesForm" property="pageRequest.pageNumber" styleClass="span2"/>
                 <span class="help-inline ">
                     <bean:message key="header.of"/>
-                    ${page.getTotalPages()}
                 </span>
                 <html:submit styleClass="btn">
                     <bean:message key="header.go"/>
