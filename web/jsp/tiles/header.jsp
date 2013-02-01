@@ -19,24 +19,20 @@
                         <bean:message key="header.title"/>
                     </html:link>
                 </li>
-                <p class="text-success">
-                    <bean:message key="header.time"/>
-                    ${EmployeesForm.time}
-                    <bean:message key="header.time.ms"/>
-                </p>
             </ul>
                 <!--**********************************************************************-->
             <html:form action="EmployeeList.do" styleClass="navbar-form pull-right">
                 <span class="help-inline ">
                     <bean:message key="header.size"/>
                 </span>
-                <html:text name="EmployeesForm" property="size" styleClass="span2"/>
+                <html:text name="EmployeesForm" property="pageRequest.pageSize" styleClass="span2"/>
                 <span class="help-inline ">
                     <bean:message key="header.page"/>
                 </span>
-                <html:text name="EmployeesForm" property="pageNumber" styleClass="span2"/>
+                <html:text name="EmployeesForm" property="pageRequest.pageNumber" styleClass="span2"/>
                 <span class="help-inline ">
                     <bean:message key="header.of"/>
+                    ${page.getTotalPages()}
                 </span>
                 <html:submit styleClass="btn">
                     <bean:message key="header.go"/>

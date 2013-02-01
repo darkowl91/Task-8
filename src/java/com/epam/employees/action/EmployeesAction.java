@@ -27,6 +27,7 @@ public final class EmployeesAction extends MappingDispatchAction {
     }
     /* forward name="success" path="" */
     private final static String EMPLOYEESLIST = "employeeList";
+    private final static String EMPLOYEE = "list"; 
 
     /**
      * This is the Struts Action method specified in struts-config file using
@@ -39,8 +40,6 @@ public final class EmployeesAction extends MappingDispatchAction {
         EmployeesForm employeeForm = (EmployeesForm) form;
         Page page = employeeDAO.findByNamedQuery(employeeForm.getPageRequest(), EMPLOYEESLIST);
         employeeForm.setPage(page);
-
-
-        return mapping.findForward(EMPLOYEESLIST);
+        return mapping.findForward(EMPLOYEE);
     }
 }

@@ -33,7 +33,7 @@
         </script>
         <!---->
         <tbody>
-            <c:forEach var="employee" items="${EmployeesForm.employees}">
+            <c:forEach var="employee" items="${EmployeesForm.page.content}">
                 <c:set var="hight" value="${fn:length(employee.works)}"/>
                 <tr>
                     <td rowspan="${hight + 1}" ><c:out value="${employee.firstName}"/></td>
