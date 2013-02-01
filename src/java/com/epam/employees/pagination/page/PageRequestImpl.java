@@ -13,6 +13,9 @@ public class PageRequestImpl implements PageRequest {
     private int pageNumber;
     private int pageSize;
 
+    public PageRequestImpl() {
+    }
+    
     /**
      * Creates a page request with the specified page number and size.
      *

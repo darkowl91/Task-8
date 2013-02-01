@@ -6,6 +6,7 @@ package com.epam.employees.form;
 
 import com.epam.employees.pagination.page.Page;
 import com.epam.employees.pagination.page.PageRequest;
+import com.epam.employees.pagination.page.PageRequestImpl;
 import org.apache.struts.action.ActionForm;
 
 /**
@@ -14,7 +15,7 @@ import org.apache.struts.action.ActionForm;
  */
 public final class EmployeesForm extends ActionForm {
     private static final long serialVersionUID = 1L;
-    private PageRequest pageRequest;
+    private PageRequest pageRequest = new PageRequestImpl();
     private Page page;
 
     public PageRequest getPageRequest() {

@@ -20,7 +20,7 @@
                     </html:link>
                 </li>
             </ul>
-                <!--**********************************************************************-->
+                
             <html:form action="EmployeeList.do" styleClass="navbar-form pull-right">
                 <span class="help-inline ">
                     <bean:message key="header.size"/>
