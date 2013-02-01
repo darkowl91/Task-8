@@ -26,7 +26,7 @@ public final class EmployeesAction extends MappingDispatchAction {
         this.employeeDAO = employeeDAO;
     }
     /* forward name="success" path="" */
-    private final static String EMPLOYEESLIST = "list";
+    private final static String EMPLOYEESLIST = "employeeList";
 
     /**
      * This is the Struts Action method specified in struts-config file using
@@ -37,7 +37,7 @@ public final class EmployeesAction extends MappingDispatchAction {
             throws Exception {
 
         EmployeesForm employeeForm = (EmployeesForm) form;
-        Page page = employeeDAO.findByNamedQuery(employeeForm.getPageRequest(), EMPLOYEESLIST, types);
+        Page page = employeeDAO.findByNamedQuery(employeeForm.getPageRequest(), EMPLOYEESLIST);
         employeeForm.setPage(page);
 
 

@@ -12,9 +12,11 @@ import com.epam.employees.pagination.page.PageRequest;
 import com.epam.employees.util.HibernateUtil;
 import java.sql.SQLException;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.MappingException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -23,28 +25,43 @@ import org.hibernate.Session;
 public class PersistentEntityDaoImpl<Entity extends PersistentEntity> implements
         PersistentEntityDAO<Entity> {
 
+
+
     @Override
     public Page<Entity> findByNamedQuery(final PageRequest pageRequest, String queryName, Object... params) throws SQLException {
         Session session = HibernateUtil.getSession();
-        
-        long totalNumberOfElements = getRowCount(session, queryName, params);
-        
-        Query query = getNamedQuery(session, queryName);
-        setParameters(query, params);
+        Transaction transaction = null;
+        Page page = null;
+        try {
+            transaction = session.getTransaction();
+            transaction.begin();
+            long totalNumberOfElements = getRowCount(session, queryName, params);
 
-        int pageNumber = pageRequest.getPageNumber();
-        int pageSize = pageRequest.getPageSize();
+            Query query = getNamedQuery(session, queryName);
+            setParameters(query, params);
 
-        int firstResult = (pageNumber - 1) * pageSize;
-        int maxResults = pageSize;
+            int pageNumber = pageRequest.getPageNumber();
+            int pageSize = pageRequest.getPageSize();
 
-        query.setFirstResult(firstResult);
-        query.setMaxResults(maxResults);
+            int firstResult = (pageNumber - 1) * pageSize;
+            int maxResults = pageSize;
 
-        List<Entity> contents = query.list();
+            query.setFirstResult(firstResult);
+            query.setMaxResults(maxResults);
 
-        Page page = new PageImpl(contents, pageNumber, pageSize, totalNumberOfElements);
-        return page;
+            List<Entity> contents = query.list();
+
+            page = new PageImpl(contents, pageNumber, pageSize, totalNumberOfElements);
+            transaction.commit();
+            return page;
+        } catch (HibernateException ex) {
+            transaction.rollback();
+            return null;
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
     }
 
     /**

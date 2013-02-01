@@ -33,4 +33,10 @@
     <query name="employeeList">
 	<![CDATA[FROM Employee as employee order by employee.id]]>
     </query>
+    
+     <query name="employeeList.count">
+        select count(*)
+        from Employee
+    </query>
+    
 </hibernate-mapping>

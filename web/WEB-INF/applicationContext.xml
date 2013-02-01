@@ -26,11 +26,11 @@
     <bean id="DAOHIBERNATE" class="com.epam.employees.dao.hibernate.PersistentEntityDaoImpl">
     </bean>
     <!--DAO JPA-->
-    <bean id="DAOJPA" class="com.epam.employees.dao.EmployeeDAOJPA">
-    </bean>
+<!--    <bean id="DAOJPA" class="com.epam.employees.dao.EmployeeDAOJPA">
+    </bean>-->
     <!--DAO JDBC-->
-    <bean id="DAOORACLE" class="com.epam.employees.dao.EployeeDAOOracle">
-    </bean>
+<!--    <bean id="DAOORACLE" class="com.epam.employees.dao.EployeeDAOOracle">
+    </bean>-->
     
     <bean name="/EmployeeList"
           id="employeeDAO"
