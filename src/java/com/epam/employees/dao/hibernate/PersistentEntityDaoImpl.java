@@ -8,7 +8,6 @@ import com.epam.employees.dao.PersistentEntityDAO;
 import com.epam.employees.model.PersistentEntity;
 import com.epam.employees.pagination.page.Page;
 import com.epam.employees.pagination.page.PageImpl;
-import com.epam.employees.pagination.page.PageRequest;
 import com.epam.employees.util.HibernateUtil;
 import java.sql.SQLException;
 import java.util.List;
@@ -25,10 +24,10 @@ import org.hibernate.Transaction;
 public class PersistentEntityDaoImpl<Entity extends PersistentEntity> implements
         PersistentEntityDAO<Entity> {
 
-
+    private static final String COUNT_QNAME = ".count";
 
     @Override
-    public Page<Entity> findByNamedQuery(final PageRequest pageRequest, String queryName, Object... params) throws SQLException {
+    public Page<Entity> findByNamedQuery(int pageNumber, int pageSize, String queryName, Object... params) throws SQLException {
         Session session = HibernateUtil.getSession();
         Transaction transaction = null;
         Page page = null;
@@ -39,9 +38,6 @@ public class PersistentEntityDaoImpl<Entity extends PersistentEntity> implements
 
             Query query = getNamedQuery(session, queryName);
             setParameters(query, params);
-
-            int pageNumber = pageRequest.getPageNumber();
-            int pageSize = pageRequest.getPageSize();
 
             int firstResult = (pageNumber - 1) * pageSize;
             int maxResults = pageSize;
@@ -100,7 +96,7 @@ public class PersistentEntityDaoImpl<Entity extends PersistentEntity> implements
     private long getRowCount(final Session session, final String queryName, final Object... params)
             throws SQLException {
 
-        String rowCountQueryName = queryName + ".count";
+        String rowCountQueryName = queryName + COUNT_QNAME;
         Query rowCountQuery = getNamedQuery(session, rowCountQueryName);
         if (rowCountQuery == null) {
             rowCountQuery = getNamedQuery(session, queryName);

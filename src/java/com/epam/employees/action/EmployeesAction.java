@@ -7,7 +7,6 @@ package com.epam.employees.action;
 import com.epam.employees.dao.PersistentEntityDAO;
 import com.epam.employees.form.EmployeesForm;
 import com.epam.employees.pagination.page.Page;
-import com.epam.employees.pagination.page.PageRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
@@ -28,7 +27,7 @@ public final class EmployeesAction extends MappingDispatchAction {
     }
     /* forward name="success" path="" */
     private final static String EMPLOYEESLIST = "employeeList";
-    private final static String EMPLOYEE = "list"; 
+    private final static String EMPLOYEE = "list";
 
     /**
      * This is the Struts Action method specified in struts-config file using
@@ -37,12 +36,12 @@ public final class EmployeesAction extends MappingDispatchAction {
     public ActionForward showEmployees(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-
         EmployeesForm employeeForm = (EmployeesForm) form;
-        PageRequest pageRequest = employeeForm.getPageRequest();
-        Page page = employeeDAO.findByNamedQuery(employeeForm.getPageRequest(),  EMPLOYEESLIST);
-       
-        employeeForm.setPage(page);
+        int pageNumber = employeeForm.getPageNumber();
+        int pageSize = employeeForm.getPageSize();
+        Page page = employeeDAO.findByNamedQuery(pageNumber, pageSize, EMPLOYEESLIST);
+        employeeForm.setTotalPages(page.getTotalPages());
+        employeeForm.setEmployees(page.getContent());
         return mapping.findForward(EMPLOYEE);
     }
 }

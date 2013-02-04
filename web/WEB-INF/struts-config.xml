@@ -8,7 +8,10 @@
 <struts-config>
     <!-- ===================== Form Bean Definitions ================================= -->  
     <form-beans>
-        <form-bean name="EmployeesForm" type="com.epam.employees.form.EmployeesForm"/>
+        <form-bean name="EmployeesForm" type="com.epam.employees.form.EmployeesForm">
+            <form-property name="pageNumber" type="java.lang.Integer" initial="1" />
+            <form-property name="pageSize" type="java.lang.Integer" initial="10"/>
+   </form-bean>
     </form-beans>
     <!-- ====================== Global Exception Definitions ============================ -->
     <global-exceptions>

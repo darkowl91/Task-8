@@ -4,25 +4,60 @@
  */
 package com.epam.employees.form;
 
-import com.epam.employees.pagination.page.Page;
-import com.epam.employees.pagination.page.PageRequest;
-import com.epam.employees.pagination.page.PageRequestImpl;
+import com.epam.employees.model.Employee;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
 
 /**
  *
  * @author Owl
  */
 public final class EmployeesForm extends ActionForm {
+    
     private static final long serialVersionUID = 1L;
-    private PageRequest pageRequest = new PageRequestImpl(1,10);
-    private Page page;
+    private int pageNumber = 1;
+    private int pageSize = 10;
+    private int totalPages;
+    private List<Employee> employees;
 
-    public PageRequest getPageRequest() {
-        return pageRequest;
+    public int getPageNumber() {
+        return pageNumber;
     }
 
-    public void setPage(Page page) {
-        this.page = page;
+    public void setPageNumber(int pageNumber) {
+        this.pageNumber = pageNumber;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getTotalPages() {
+        return totalPages;
+    }
+
+    public void setTotalPages(int totalPages) {
+        this.totalPages = totalPages;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
+    
+    @Override
+    public void reset(ActionMapping mapping, HttpServletRequest request) {
+        this.pageNumber = 1;
+        this.pageSize = 10;
+        super.reset(mapping, request);
     }
 }

@@ -21,22 +21,22 @@
                 </li>
             </ul>
 
-            <html:form action="EmployeeList.do" styleClass="navbar-form pull-right">
-                    <span class="help-inline ">
-                        <bean:message key="header.size"/>
-                    </span>
-                    <html:text name="EmployeesForm" property="pageRequest.pageSize" styleClass="span2"/>
-                    <span class="help-inline ">
-                        <bean:message key="header.page"/>
-                    </span>
-                    <html:text name="EmployeesForm" property="pageRequest.pageNumber" styleClass="span2"/>
-                    <span class="help-inline ">
-                        <bean:message key="header.of"/>
-                    </span>
-                    <html:submit styleClass="btn">
-                        <bean:message key="header.go"/>
-                    </html:submit>
-                </html:form>            
-            </div>
+            <html:form action="/EmployeeList" styleClass="navbar-form pull-right">
+                <html:hidden property="method" value="EmployeeList.do" />
+                <span class="help-inline">
+                    <bean:message key="header.size" />
+                </span>
+                <nested:text name="EmployeesForm" property="pageSize" styleClass="span2"/>
+                <span class="help-inline ">
+                    <nested:message key="header.page"/>
+                </span>
+                <nested:text name="EmployeesForm" property="pageNumber" styleClass="span2"/>
+                <span class="help-inline ">
+                    <bean:message key="header.of"/>
+                    ${EmployeesForm.totalPages}
+                </span>
+                <input type="submit" value="GO!" class="btn" />
+            </html:form>
         </div>
     </div>
+</div>
