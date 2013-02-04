@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.epam.employees.dao.hibernate;
+package com.epam.employees.dao;
 
 import com.epam.employees.dao.PersistentEntityDAO;
 import com.epam.employees.model.PersistentEntity;
@@ -21,7 +21,7 @@ import org.hibernate.Transaction;
  *
  * @author Nickolay_Petrash
  */
-public class PersistentEntityDaoImpl<Entity extends PersistentEntity> implements
+public class HibernateImpl<Entity extends PersistentEntity> implements
         PersistentEntityDAO<Entity> {
 
     private static final String COUNT_QNAME = ".count";

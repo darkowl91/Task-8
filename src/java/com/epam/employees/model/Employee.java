@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.hibernate.annotations.BatchSize;
@@ -22,6 +24,10 @@ import org.hibernate.annotations.BatchSize;
  */
 @Entity
 @Table(name = DBConstants.EMPLOYEE_TABLE)
+@NamedQueries({
+    @NamedQuery(name = "employeeList", query = "FROM Employee as employee order by employee.id"),
+    @NamedQuery(name = "employeeList.count", query = "select count(*) from Employee)")
+})
 public class Employee extends PersistentEntity {
 
     private static final long serialVersionUID = 1L;
