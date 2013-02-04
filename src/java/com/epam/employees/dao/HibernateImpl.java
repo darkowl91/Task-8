@@ -4,7 +4,6 @@
  */
 package com.epam.employees.dao;
 
-import com.epam.employees.dao.PersistentEntityDAO;
 import com.epam.employees.model.PersistentEntity;
 import com.epam.employees.pagination.page.Page;
 import com.epam.employees.pagination.page.PageImpl;

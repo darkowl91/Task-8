@@ -29,7 +29,7 @@
     <bean id="DAOJPA" class="com.epam.employees.dao.JpaImpl">
     </bean>
     <!--DAO JDBC-->
-<!--    <bean id="DAOORACLE" class="com.epam.employees.dao.EployeeDAOOracle">
+    <!--<bean id="DAOORACLE" class="com.epam.employees.dao.EployeeDAOOracle">
     </bean>-->
     
     <bean name="/EmployeeList"
