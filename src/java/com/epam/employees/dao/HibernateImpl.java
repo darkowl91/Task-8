@@ -1,9 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.epam.employees.dao;
 
+import com.epam.employees.constants.DBConstants;
 import com.epam.employees.model.PersistentEntity;
 import com.epam.employees.pagination.page.Page;
 import com.epam.employees.pagination.page.PageImpl;
@@ -20,10 +17,9 @@ import org.hibernate.Transaction;
  *
  * @author Nickolay_Petrash
  */
-public class HibernateImpl<Entity extends PersistentEntity> implements
+public final class HibernateImpl<Entity extends PersistentEntity> implements
         PersistentEntityDAO<Entity> {
 
-    private static final String COUNT_QNAME = ".count";
 
     @Override
     public Page<Entity> findByNamedQuery(int pageNumber, int pageSize, String queryName, Object... params) throws SQLException {
@@ -95,7 +91,7 @@ public class HibernateImpl<Entity extends PersistentEntity> implements
     private long getRowCount(final Session session, final String queryName, final Object... params)
             throws SQLException {
 
-        String rowCountQueryName = queryName + COUNT_QNAME;
+        String rowCountQueryName = queryName + DBConstants.COUNT_QNAME;
         Query rowCountQuery = getNamedQuery(session, rowCountQueryName);
         if (rowCountQuery == null) {
             rowCountQuery = getNamedQuery(session, queryName);

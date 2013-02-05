@@ -1,9 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.epam.employees.dao;
 
+import com.epam.employees.constants.DBConstants;
 import com.epam.employees.model.PersistentEntity;
 import com.epam.employees.pagination.page.Page;
 import com.epam.employees.pagination.page.PageImpl;
@@ -18,10 +15,8 @@ import javax.persistence.Query;
  *
  * @author Nickolay_Petrash
  */
-public class JpaImpl<Entity extends PersistentEntity> implements
+public final class JpaImpl<Entity extends PersistentEntity> implements
         PersistentEntityDAO<Entity> {
-
-    private static final String COUNT_QNAME = ".count";
 
     @Override
     public Page<Entity> findByNamedQuery(int pageNumber, int pageSize, String queryName, Object... params) throws SQLException {
@@ -48,7 +43,7 @@ public class JpaImpl<Entity extends PersistentEntity> implements
     }
 
     /**
-     *
+     * Set parameters to query
      * @param query
      * @param params
      */
@@ -59,17 +54,17 @@ public class JpaImpl<Entity extends PersistentEntity> implements
     }
 
     /**
-     *
+     *get total number of records in db
      * @param eManager
      * @param queryName
      * @param params
-     * @return
+     * @return number of records
      * @throws SQLException
      */
     private long getRowCount(final EntityManager eManager, final String queryName, final Object... params)
             throws SQLException {
 
-        String rowCountQueryName = queryName + COUNT_QNAME;
+        String rowCountQueryName = queryName + DBConstants.COUNT_QNAME;
         Query rowCountQuery = eManager.createNamedQuery(rowCountQueryName);
         setParameters(rowCountQuery, params);
         return ((Number)rowCountQuery.getSingleResult()).longValue();

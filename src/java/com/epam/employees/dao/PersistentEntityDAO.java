@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.epam.employees.dao;
 
 import com.epam.employees.model.PersistentEntity;
@@ -14,5 +10,14 @@ import java.sql.SQLException;
  */
 public interface PersistentEntityDAO<Entity extends PersistentEntity> {
 
-    Page<Entity> findByNamedQuery(int pageNumber, int pageSize, String queryName, Object... params)  throws SQLException;
+    /**
+     * 
+     * @param pageNumber number of current page
+     * @param pageSize number of records per page
+     * @param queryName name of query to get records from db
+     * @param params parameters for query
+     * @return Page with content
+     * @throws SQLException
+     */
+    Page<Entity> findByNamedQuery(int pageNumber, int pageSize, String queryName, Object... params) throws SQLException;
 }

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.epam.employees.pagination.page;
 
 import java.util.Iterator;
@@ -11,7 +7,7 @@ import java.util.List;
  *
  * @author Nickolay_Petrash
  */
-public class PageImpl<Entity> implements Page<Entity>, Iterable<Entity> {
+public final class PageImpl<Entity> implements Page<Entity>, Iterable<Entity> {
 
     private List<Entity> content;
     private int pageNumber;

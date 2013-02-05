@@ -1,9 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.epam.employees.action;
 
+import com.epam.employees.constants.DBConstants;
 import com.epam.employees.dao.PersistentEntityDAO;
 import com.epam.employees.form.EmployeesForm;
 import com.epam.employees.pagination.page.Page;
@@ -26,7 +23,6 @@ public final class EmployeesAction extends MappingDispatchAction {
         this.employeeDAO = employeeDAO;
     }
     /* forward name="success" path="" */
-    private final static String EMPLOYEESLIST = "employeeList";
     private final static String EMPLOYEE = "list";
 
     /**
@@ -37,11 +33,15 @@ public final class EmployeesAction extends MappingDispatchAction {
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         EmployeesForm employeeForm = (EmployeesForm) form;
+        
         int pageNumber = employeeForm.getPageNumber();
         int pageSize = employeeForm.getPageSize();
-        Page page = employeeDAO.findByNamedQuery(pageNumber, pageSize, EMPLOYEESLIST);
+        
+        Page page = employeeDAO.findByNamedQuery(pageNumber, pageSize, DBConstants.QUERY_NAME_EMPLOYEELIST);
+        
         employeeForm.setTotalPages(page.getTotalPages());
         employeeForm.setEmployees(page.getContent());
+        
         return mapping.findForward(EMPLOYEE);
     }
 }

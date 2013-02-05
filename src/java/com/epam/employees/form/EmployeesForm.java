@@ -21,6 +21,7 @@ public final class EmployeesForm extends ActionForm {
     private int pageSize = 10;
     private int totalPages;
     private List<Employee> employees;
+    private long time;
 
     public int getPageNumber() {
         return pageNumber;
@@ -52,6 +53,14 @@ public final class EmployeesForm extends ActionForm {
 
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
+    }
+
+    public long getTime() {
+        return time;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
     }
     
     @Override

@@ -1,10 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.epam.employees.model;
 
 import com.epam.employees.constants.DBConstants;
+import com.epam.employees.constants.DBQuery;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -26,8 +23,8 @@ import org.hibernate.annotations.BatchSize;
 @Entity
 @Table(name = DBConstants.EMPLOYEE_TABLE)
 @NamedQueries({
-    @NamedQuery(name = "employeeList", query = "SELECT e FROM Employee e ORDER BY e.id ASC"),
-    @NamedQuery(name = "employeeList.count", query = "SELECT COUNT (e) FROM Employee e")
+    @NamedQuery(name = DBConstants.QUERY_NAME_EMPLOYEELIST, query = DBQuery.EMPLOYEE_LIST),
+    @NamedQuery(name = DBConstants.QUERY_NAME_EMPLOYEELIST_COUNT, query = DBQuery.EMPLOYEE_LIST_COUNT)
 })
 public class Employee extends PersistentEntity {
 
@@ -69,7 +66,7 @@ public class Employee extends PersistentEntity {
         this.works = works;
     }
 
-    @OneToMany(mappedBy = "idEmployee", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = DBConstants.ID_EMPLOYEE, fetch = FetchType.EAGER)
     @BatchSize(size = 100)
     public Set<Work> getWorks() {
         return this.works;

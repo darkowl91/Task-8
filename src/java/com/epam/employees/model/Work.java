@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.epam.employees.model;
 
 import com.epam.employees.constants.DBConstants;
@@ -35,14 +31,6 @@ public class Work extends PersistentEntity {
         return this.office;
     }
 
-//    public void setEmployee(Employee employee) {
-//        this.employee = employee;
-//    }
-//
-//    @ManyToOne
-//    public Employee getEmployee() {
-//        return this.employee;
-//    }
     public void setPosition(Position position) {
         this.position = position;
     }

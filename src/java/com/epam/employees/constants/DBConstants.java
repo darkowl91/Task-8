@@ -12,7 +12,6 @@ public final class DBConstants {
 
     private DBConstants() {
     }
-    
     public static final String ID = "ID";
     public static final String ADDRESS_TABLE = "ADDRESS";
     public static final String ADDRESS_STREET = "STREET";
@@ -28,6 +27,7 @@ public final class DBConstants {
     public static final String EMPLOYEE_LASTNAME = "LASTNAME";
     public static final String EMPLOYEE_FIRSTNAME = "FIRSTNAME";
     public static final String EMPLOYEE_ID = "EMPLOYEE_ID";
+    public static final String ID_EMPLOYEE = "idEmployee";
     public static final String OFFICE_TABLE = "OFFICE";
     public static final String COMPANY_ID = "COMPANY_ID";
     public static final String ADDRESS_ID = "ADDRESS_ID";
@@ -35,5 +35,8 @@ public final class DBConstants {
     public static final String WORK_TABLE = "WORK";
     public static final String OFFICE_ID = "OFFICE_ID";
     public static final String POSITION_ID = "POSITION_ID";
+    public static final String QUERY_NAME_EMPLOYEELIST = "employeeList";
+    public static final String QUERY_NAME_EMPLOYEELIST_COUNT = "employeeList.count";
+    public static final String COUNT_QNAME = ".count";
     
 }

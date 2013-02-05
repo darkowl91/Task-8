@@ -1,10 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.epam.employees.model;
 
 import com.epam.employees.constants.DBConstants;
+import com.epam.employees.constants.DBQuery;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -49,7 +46,7 @@ public class Office extends PersistentEntity {
         this.countOfEmployees = count;
     }
 
-    @Formula(value = "(SELECT COUNT(*) FROM EMPLOYEES.WORK WHERE WORK.OFFICE_ID=ID)")
+    @Formula(value = DBQuery.FORMYLA)
     public int getCountOfEmployees() {
         return this.countOfEmployees;
     }
