@@ -19,6 +19,11 @@
                         <bean:message key="header.title"/>
                     </html:link>
                 </li>
+                   <p class="text-success">
+                    <bean:message key="header.time"/>
+                    ${EmployeesForm.time}
+                    <bean:message key="header.time.ms"/>
+                </p>
             </ul>
 
             <html:form action="/EmployeeList" styleClass="navbar-form pull-right">

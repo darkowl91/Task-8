@@ -19,6 +19,36 @@
     p:url="${jdbc.url}"
     p:username="${jdbc.username}"
     p:password="${jdbc.password}" /-->
+    
+    <!-- Database parameters  -->
+    <bean id="dataBaseParameters" class="com.epam.employees.util.DataBaseParameters">
+        <property name="uRL"           value="jdbc:oracle:thin:@localhost:1521:XE"/>
+        <property name="driver"         value="oracle.jdbc.OracleDriver"/>
+        <property name="user"          value="EMPLOYEES"/>
+        <property name="password"   value="5832558"/>
+    </bean>
+ 
+    <!-- Connection pool -->
+    <bean id="connectionPool" class="com.epam.employees.util.ConnectionPool"
+          init-method="initConPool" destroy-method="releaseAll">
+        <property name="maxConnectionsCount" value="10"/>
+        <property name="dbParameters">
+            <ref bean="dataBaseParameters"/>
+        </property>
+    </bean>
+    
+    <!-- Resourse releser -->
+    <bean id="releaser" class="com.epam.employees.dao.Releaser"/>
+    
+    <!--DAO JDBC-->
+    <bean id="DAOORACLE" class="com.epam.employees.dao.JdbcImpl">
+        <property name="resourceReleaser">
+            <ref bean="releaser"/>
+        </property>
+        <property name="connectionPool">
+            <ref bean="connectionPool"/> 
+        </property>
+    </bean>
 
     <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
     
@@ -28,10 +58,8 @@
     <!--DAO JPA-->
     <bean id="DAOJPA" class="com.epam.employees.dao.JpaImpl">
     </bean>
-    <!--DAO JDBC-->
-    <!--<bean id="DAOORACLE" class="com.epam.employees.dao.EployeeDAOOracle">
-    </bean>-->
     
+    <!-- Actions -->
     <bean name="/EmployeeList"
           id="employeeDAO"
           class="com.epam.employees.action.EmployeesAction">

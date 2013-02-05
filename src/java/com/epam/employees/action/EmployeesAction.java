@@ -33,15 +33,19 @@ public final class EmployeesAction extends MappingDispatchAction {
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         EmployeesForm employeeForm = (EmployeesForm) form;
-        
+
         int pageNumber = employeeForm.getPageNumber();
         int pageSize = employeeForm.getPageSize();
-        
+
+        long beginTime = System.currentTimeMillis();
         Page page = employeeDAO.findByNamedQuery(pageNumber, pageSize, DBConstants.QUERY_NAME_EMPLOYEELIST);
-        
+        long endTime = System.currentTimeMillis();
+        long time = endTime - beginTime;
+
+        employeeForm.setTime(time);
         employeeForm.setTotalPages(page.getTotalPages());
         employeeForm.setEmployees(page.getContent());
-        
+
         return mapping.findForward(EMPLOYEE);
     }
 }
