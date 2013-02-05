@@ -19,13 +19,15 @@ import javax.persistence.Table;
 import org.hibernate.annotations.BatchSize;
 
 /**
+ *
+ *
  * @author Owl
  */
 @Entity
 @Table(name = DBConstants.EMPLOYEE_TABLE)
 @NamedQueries({
-    @NamedQuery(name = "employeeList", query = "SELECT Employee FROM Employee employee order by employee.id"),
-    @NamedQuery(name = "employeeList.count", query = "SELECT COUNT (Employee) FROM Employee Employee")
+    @NamedQuery(name = "employeeList", query = "SELECT e FROM Employee e ORDER BY e.id ASC"),
+    @NamedQuery(name = "employeeList.count", query = "SELECT COUNT (e) FROM Employee e")
 })
 public class Employee extends PersistentEntity {
 

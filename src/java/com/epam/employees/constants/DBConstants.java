@@ -19,7 +19,6 @@ public final class DBConstants {
     public static final String ADDRESS_BUILDING = "BUILDING";
     public static final String ADDRESS_ROOM = "ROOM";
     public static final String CITY_ID = "CITY_ID";
-    public static final String FORMULA_NAME = "countOfEmployees";
     public static final String CITY_TABLE = "CITY";
     public static final String TITLE = "TITLE";
     public static final String COUNTRY_ID = "COUNTRY_ID";
@@ -36,4 +35,5 @@ public final class DBConstants {
     public static final String WORK_TABLE = "WORK";
     public static final String OFFICE_ID = "OFFICE_ID";
     public static final String POSITION_ID = "POSITION_ID";
+    
 }

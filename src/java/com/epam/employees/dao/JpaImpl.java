@@ -72,6 +72,6 @@ public class JpaImpl<Entity extends PersistentEntity> implements
         String rowCountQueryName = queryName + COUNT_QNAME;
         Query rowCountQuery = eManager.createNamedQuery(rowCountQueryName);
         setParameters(rowCountQuery, params);
-        return rowCountQuery.getResultList().size();
+        return ((Number)rowCountQuery.getSingleResult()).longValue();
     }
 }

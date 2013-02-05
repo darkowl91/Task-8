@@ -49,7 +49,7 @@ public class Office extends PersistentEntity {
         this.countOfEmployees = count;
     }
 
-    @Formula(value = DBConstants.FORMULA_NAME)
+    @Formula(value = "(SELECT COUNT(*) FROM EMPLOYEES.WORK WHERE WORK.OFFICE_ID=ID)")
     public int getCountOfEmployees() {
         return this.countOfEmployees;
     }
