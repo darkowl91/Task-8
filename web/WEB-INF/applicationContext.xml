@@ -65,8 +65,8 @@
           class="com.epam.employees.action.EmployeesAction">
         <property name="employeeDAO">
             <!--<ref bean="DAOHIBERNATE"/>-->
-            <ref bean="DAOJPA"/>
-            <!--<ref bean="DAOORACLE"/>-->
+            <!--<ref bean="DAOJPA"/>-->
+            <ref bean="DAOORACLE"/>
         </property>
     </bean>
 

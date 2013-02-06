@@ -38,7 +38,7 @@ public final class EmployeesAction extends MappingDispatchAction {
         int pageSize = employeeForm.getPageSize();
 
         long beginTime = System.currentTimeMillis();
-        Page page = employeeDAO.findByNamedQuery(pageNumber, pageSize, DBConstants.QUERY_NAME_EMPLOYEELIST);
+        Page page = employeeDAO.getPage(pageNumber, pageSize);
         long endTime = System.currentTimeMillis();
         long time = endTime - beginTime;
 

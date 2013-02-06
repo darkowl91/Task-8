@@ -19,5 +19,5 @@ public interface PersistentEntityDAO<Entity extends PersistentEntity> {
      * @return Page with content
      * @throws SQLException
      */
-    Page<Entity> findByNamedQuery(int pageNumber, int pageSize, String queryName, Object... params) throws SQLException;
+    Page<Entity> getPage(int pageNumber, int pageSize) throws SQLException;
 }

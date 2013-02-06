@@ -19,14 +19,13 @@ public final class JpaImpl<Entity extends PersistentEntity> implements
         PersistentEntityDAO<Entity> {
 
     @Override
-    public Page<Entity> findByNamedQuery(int pageNumber, int pageSize, String queryName, Object... params) throws SQLException {
+    public Page<Entity> getPage(int pageNumber, int pageSize) throws SQLException {
         EntityManager eManager = EntityManagerFactoryWrapper.getEntityManager();
         EntityTransaction entityTransaction = eManager.getTransaction();
         entityTransaction.begin();
 
-        long totalNumberOfElements = getRowCount(eManager, queryName, params);
-        Query query = eManager.createNamedQuery(queryName);
-        setParameters(query, params);
+        long totalNumberOfElements = getRowCount(eManager, DBConstants.QUERY_NAME_EMPLOYEELIST);
+        Query query = eManager.createNamedQuery(DBConstants.QUERY_NAME_EMPLOYEELIST);
 
         int firstResuIt = (pageNumber - 1) * pageSize;
         int maxResults = pageSize;
@@ -43,30 +42,19 @@ public final class JpaImpl<Entity extends PersistentEntity> implements
     }
 
     /**
-     * Set parameters to query
-     * @param query
-     * @param params
-     */
-    private void setParameters(Query query, final Object... params) {
-        for (int index = 0; index < params.length; index++) {
-            query.setParameter(index, params[index]);
-        }
-    }
-
-    /**
-     *get total number of records in db
+     * get total number of records in db
+     *
      * @param eManager
      * @param queryName
      * @param params
      * @return number of records
      * @throws SQLException
      */
-    private long getRowCount(final EntityManager eManager, final String queryName, final Object... params)
+    private long getRowCount(final EntityManager eManager, final String queryName)
             throws SQLException {
 
         String rowCountQueryName = queryName + DBConstants.COUNT_QNAME;
         Query rowCountQuery = eManager.createNamedQuery(rowCountQueryName);
-        setParameters(rowCountQuery, params);
-        return ((Number)rowCountQuery.getSingleResult()).longValue();
+        return ((Number) rowCountQuery.getSingleResult()).longValue();
     }
 }

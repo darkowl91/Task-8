@@ -20,19 +20,17 @@ import org.hibernate.Transaction;
 public final class HibernateImpl<Entity extends PersistentEntity> implements
         PersistentEntityDAO<Entity> {
 
-
     @Override
-    public Page<Entity> findByNamedQuery(int pageNumber, int pageSize, String queryName, Object... params) throws SQLException {
+    public Page<Entity> getPage(int pageNumber, int pageSize) throws SQLException {
         Session session = HibernateUtil.getSession();
         Transaction transaction = null;
         Page page = null;
         try {
             transaction = session.getTransaction();
             transaction.begin();
-            long totalNumberOfElements = getRowCount(session, queryName, params);
+            long totalNumberOfElements = getRowCount(session, DBConstants.QUERY_NAME_EMPLOYEELIST);
 
-            Query query = getNamedQuery(session, queryName);
-            setParameters(query, params);
+            Query query = getNamedQuery(session, DBConstants.QUERY_NAME_EMPLOYEELIST);
 
             int firstResult = (pageNumber - 1) * pageSize;
             int maxResults = pageSize;
@@ -71,17 +69,6 @@ public final class HibernateImpl<Entity extends PersistentEntity> implements
 
     /**
      *
-     * @param query
-     * @param params
-     */
-    private void setParameters(final Query query, final Object... params) {
-        for (int index = 0; index < params.length; index++) {
-            query.setParameter(index, params[index]);
-        }
-    }
-
-    /**
-     *
      * @param session
      * @param queryName
      * @param params
@@ -90,15 +77,12 @@ public final class HibernateImpl<Entity extends PersistentEntity> implements
      */
     private long getRowCount(final Session session, final String queryName, final Object... params)
             throws SQLException {
-
         String rowCountQueryName = queryName + DBConstants.COUNT_QNAME;
         Query rowCountQuery = getNamedQuery(session, rowCountQueryName);
         if (rowCountQuery == null) {
             rowCountQuery = getNamedQuery(session, queryName);
-            setParameters(rowCountQuery, params);
             return rowCountQuery.list().size();
         } else {
-            setParameters(rowCountQuery, params);
             return (Long) rowCountQuery.uniqueResult();
         }
     }
