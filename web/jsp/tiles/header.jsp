@@ -9,6 +9,7 @@
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <%@taglib uri="/WEB-INF/struts-nested.tld" prefix="nested" %>
+<%@ taglib uri="/WEB-INF/tlds/paging-tag.tld" prefix="pg" %>
 
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
@@ -19,29 +20,13 @@
                         <bean:message key="header.title"/>
                     </html:link>
                 </li>
-                   <p class="text-success">
+                <p class="text-success">
                     <bean:message key="header.time"/>
                     ${EmployeesForm.time}
                     <bean:message key="header.time.ms"/>
                 </p>
             </ul>
-
-            <html:form action="/EmployeeList" styleClass="navbar-form pull-right">
-                <html:hidden property="method" value="EmployeeList.do" />
-                <span class="help-inline">
-                    <bean:message key="header.size" />
-                </span>
-                <nested:text name="EmployeesForm" property="pageSize" styleClass="span2"/>
-                <span class="help-inline ">
-                    <nested:message key="header.page"/>
-                </span>
-                <nested:text name="EmployeesForm" property="pageNumber" styleClass="span2"/>
-                <span class="help-inline ">
-                    <bean:message key="header.of"/>
-                    ${EmployeesForm.totalPages}
-                </span>
-                <input type="submit" value="GO!" class="btn" />
-            </html:form>
+            <pg:Paging-form/>
         </div>
     </div>
 </div>
