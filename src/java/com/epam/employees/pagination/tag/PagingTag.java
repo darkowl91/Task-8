@@ -39,7 +39,11 @@ public class PagingTag extends TagSupport {
     @Override
     public int doStartTag() throws JspException {
         JspWriter out = pageContext.getOut();
-        writePagingForm(out);
+        try {
+            writePagingForm(out);
+        } catch (IOException ex) {
+            Logger.getLogger(PagingTag.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return Tag.SKIP_BODY;
     }
 
@@ -51,9 +55,9 @@ public class PagingTag extends TagSupport {
     @Override
     public void release() {
     }
-    
-    private void writePagingForm(JspWriter out) {
-        
-        
+
+    private void writePagingForm(JspWriter out) throws IOException {
+        out.write("<form action=\" xcx \"onsubmit=\"return validatePagingForm(this);\">");
+
     }
 }
