@@ -26,7 +26,7 @@
                     <bean:message key="header.time.ms"/>
                 </p>
             </ul>
-            <pg:Paging-form pageNumber="${pageNumber}" pageSize="${pageSize}" totalPages="${totalPages}" action="EmployeeList.do"/>
+            <pg:Paging-form pageNumber="${EmployeesForm.pageNumber}" pageSize="${EmployeesForm.pageSize}" totalPages="${EmployeesForm.totalPages}" action="EmployeeList.do"/>
         </div>
     </div>
 </div>
