@@ -14,7 +14,7 @@
 <div class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="navbar-inner">
         <div class="container-fluid">
-            <pg:Paging-form/>
+            <pg:Paging-form pageNumber="${pageNumber}" pageSize="${pageSize}" totalPages="${totalPages}" action="EmployeeList.do"/>
             <footer>
                 <p>&copy; <bean:message key="footer.company.text"/></p>
             </footer>

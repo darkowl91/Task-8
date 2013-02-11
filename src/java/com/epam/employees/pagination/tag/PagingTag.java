@@ -9,8 +9,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
-import javax.servlet.jsp.PageContext;
-import javax.servlet.jsp.tagext.Tag;
 import javax.servlet.jsp.tagext.TagSupport;
 
 /**
@@ -19,45 +17,79 @@ import javax.servlet.jsp.tagext.TagSupport;
  */
 public class PagingTag extends TagSupport {
 
-    private static final long serialVersionUID = 1L;
-    PageContext context;
-
-    @Override
-    public void setPageContext(PageContext context) {
-        this.context = context;
-    }
-
-    @Override
-    public void setParent(Tag parent) {
-    }
-
-    @Override
-    public Tag getParent() {
-        return null;
-    }
+    private static final long serialVersionUID = 5492589500127835257L;
+    private int pageNumber;
+    private int pageSize;
+    private int totalPages;
+    private String action;
 
     @Override
     public int doStartTag() throws JspException {
-        JspWriter out = pageContext.getOut();
         try {
-            writePagingForm(out);
+            JspWriter out = pageContext.getOut();
+            printForm(out);
         } catch (IOException ex) {
             Logger.getLogger(PagingTag.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return Tag.SKIP_BODY;
+        return SKIP_BODY;
     }
 
-    @Override
-    public int doEndTag() throws JspException {
-        return Tag.EVAL_PAGE;
+    public int getPageNumber() {
+        return pageNumber;
     }
 
-    @Override
-    public void release() {
+    public void setPageNumber(int pageNumber) {
+        this.pageNumber = pageNumber;
     }
 
-    private void writePagingForm(JspWriter out) throws IOException {
-        out.write("<form action=\" xcx \"onsubmit=\"return validatePagingForm(this);\">");
-
+    public int getPageSize() {
+        return pageSize;
     }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getTotalPages() {
+        return totalPages;
+    }
+
+    public void setTotalPages(int totalPages) {
+        this.totalPages = totalPages;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+
+    private void printForm(JspWriter out) throws IOException {
+        out.write("<form action=\"" + action + "\"onsubmit=\"return validatePagingForm(this);\">");
+        out.write("Page ");
+        out.write("<input type=\"text\" name=\"page\" size=\"3\" value=\"" + pageNumber + "\" />");
+        out.write("of " + totalPages + " shown");
+        out.write("<br /> Show");
+        out.write("<input type=\"text\" name=\"employeesOnPage\" size=\"3\" value=\"" + pageSize + "\" />");
+        out.write("<input type=\"submit\" value=\"Enter\"/>");
+        out.write("</form>");
+    }
+//<html:form action="/EmployeeList" styleClass="navbar-form pull-right">
+//<html:hidden property="method" value="EmployeeList.do" />
+//<span class="help-inline">
+//<bean:message key="header.size"/>
+//</span>
+//<nested:text name="EmployeesForm" property="pageSize" styleClass="span2"/>
+//<span class="help-inline">
+//<nested:message key="header.page"/>
+//</span>
+//<nested:text name="EmployeesForm" property="pageNumber" styleClass="span2"/>
+//<span class="help-inline">
+//<bean:message key="header.of"/>
+//${EmployeesForm.totalPages}
+//</span>
+//<input type="submit" value="GO!" class="btn" />
+//</html:form>
 }
