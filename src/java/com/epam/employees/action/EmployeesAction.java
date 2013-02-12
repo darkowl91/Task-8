@@ -1,6 +1,5 @@
 package com.epam.employees.action;
 
-import com.epam.employees.constants.DBConstants;
 import com.epam.employees.dao.PersistentEntityDAO;
 import com.epam.employees.form.EmployeesForm;
 import com.epam.employees.pagination.page.Page;
@@ -45,6 +44,7 @@ public final class EmployeesAction extends MappingDispatchAction {
         employeeForm.setTime(time);
         employeeForm.setTotalPages(page.getTotalPages());
         employeeForm.setEmployees(page.getContent());
+        employeeForm.setTotalItems(page.getTotalNumberOfElements());
 
         return mapping.findForward(EMPLOYEE);
     }

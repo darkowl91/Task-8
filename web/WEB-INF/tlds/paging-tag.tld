@@ -42,6 +42,12 @@
             <required>true</required> 
             <rtexprvalue>true</rtexprvalue>
         </attribute>
+        <!--TOTAL ELEMENTS-->
+        <attribute>
+            <name>totalItems</name>
+            <required>true</required> 
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
         <!--ACTION-->
         <attribute>
             <name>action</name>

@@ -15,11 +15,12 @@ import org.apache.struts.action.ActionMapping;
  * @author Owl
  */
 public final class EmployeesForm extends ActionForm {
-    
+
     private static final long serialVersionUID = 1L;
     private int pageNumber = 1;
     private int pageSize = 10;
     private int totalPages;
+    private long totalItems;
     private List<Employee> employees;
     private long time;
 
@@ -28,7 +29,11 @@ public final class EmployeesForm extends ActionForm {
     }
 
     public void setPageNumber(int pageNumber) {
-        this.pageNumber = pageNumber;
+        if (pageNumber > totalPages) {
+            this.pageNumber = totalPages;
+        } else {
+            this.pageNumber = pageNumber;
+        }
     }
 
     public int getPageSize() {
@@ -36,7 +41,11 @@ public final class EmployeesForm extends ActionForm {
     }
 
     public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
+        if (pageSize > totalItems) {
+            this.pageSize = (int)totalItems;
+        } else {
+            this.pageSize = pageSize;
+        }
     }
 
     public int getTotalPages() {
@@ -61,6 +70,14 @@ public final class EmployeesForm extends ActionForm {
 
     public void setTime(long time) {
         this.time = time;
+    }
+
+    public long getTotalItems() {
+        return totalItems;
+    }
+
+    public void setTotalItems(long totalItems) {
+        this.totalItems = totalItems;
     }
     
     @Override

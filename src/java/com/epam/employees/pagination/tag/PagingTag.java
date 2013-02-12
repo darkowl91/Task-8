@@ -21,6 +21,7 @@ public class PagingTag extends TagSupport {
     private int pageNumber;
     private int pageSize;
     private int totalPages;
+    private long totalItems;
     private String action;
 
     @Override
@@ -58,6 +59,14 @@ public class PagingTag extends TagSupport {
         this.totalPages = totalPages;
     }
 
+    public long getTotalItems() {
+        return totalItems;
+    }
+
+    public void setTotalItems(long totalItems) {
+        this.totalItems = totalItems;
+    }
+
     public String getAction() {
         return action;
     }
@@ -67,20 +76,25 @@ public class PagingTag extends TagSupport {
     }
 
     private void printForm(JspWriter out) throws IOException {
+   
         out.write("<form class=\"navbar-form pull-right\" action=\"" + action + "\"onsubmit=\"return validatePagingForm(this);\">");
         out.write("<span class=\"help-inline\">");
-        out.write("Size");
+        out.write("Show");
         out.write("</span>");
         out.write("<input type=\"text\" class=\" span2\" name=\"pageSize\" onblur=\"validate(this)\" size=\"3\" value=\"" + pageSize + "\" />");
+        out.write("<span class=\"help-inline\">");
+        out.write("items of total" + totalItems);
+        out.write("</span>");
         out.write("<span class=\"help-inline\">");
         out.write("Page");
         out.write("</span>");
         out.write("<input type=\"text\" class=\" span2\" name=\"pageNumber\" onblur=\"validate(this)\" size=\"3\" value=\"" + pageNumber + "\" />");
         out.write("<span class=\"help-inline\">");
-        out.write("of " + totalPages);
+        out.write("of " + totalPages + "shown");
         out.write("</span>");
         out.write("<input type=\"submit\" class=\"btn\" value=\"GO!\"/>");
         out.write("</form>");
     }
-
+    
+    
 }
