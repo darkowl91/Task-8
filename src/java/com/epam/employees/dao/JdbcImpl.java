@@ -55,10 +55,9 @@ public final class JdbcImpl<Entity extends PersistentEntity> implements
             List<Employee> employees = new ArrayList<>();
             
             int firstResult = (pageNumber - 1) * pageSize;
-            int maxResults = pageSize;
-            
-            preparedStatement.setInt(2, firstResult);
-            preparedStatement.setInt(1, maxResults);
+
+            preparedStatement.setInt(1, firstResult + pageSize);
+            preparedStatement.setInt(2, firstResult + 1);
             
             resultSet = preparedStatement.executeQuery();
             

@@ -23,8 +23,7 @@
 
     <formset>
 
-        <!-- An example form -->
-        <form name="logonForm">
+        <form name="EmployeesForm">
             <field
                 property="username"
                 depends="required">
