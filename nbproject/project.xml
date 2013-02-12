@@ -71,7 +71,10 @@
             <definitions>.\lib\nblibraries.properties</definitions>
         </libraries>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>emptyField</word>
             <word>firstname</word>
+            <word>incorrectFormat</word>
+            <word>incorrectFormatl</word>
         </spellchecker-wordlist>
         <spring-data xmlns="http://www.netbeans.org/ns/spring-data/1">
             <config-files>

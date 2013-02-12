@@ -71,11 +71,11 @@ public class PagingTag extends TagSupport {
         out.write("<span class=\"help-inline\">");
         out.write("Size");
         out.write("</span>");
-        out.write("<input type=\"text\" class=\" span2\" name=\"pageSize\" size=\"3\" value=\"" + pageSize + "\" />");
+        out.write("<input type=\"text\" class=\" span2\" name=\"pageSize\" onblur=\"validate(this)\" size=\"3\" value=\"" + pageSize + "\" />");
         out.write("<span class=\"help-inline\">");
         out.write("Page");
         out.write("</span>");
-        out.write("<input type=\"text\" class=\" span2\" name=\"pageNumber\" size=\"3\" value=\"" + pageNumber + "\" />");
+        out.write("<input type=\"text\" class=\" span2\" name=\"pageNumber\" onblur=\"validate(this)\" size=\"3\" value=\"" + pageNumber + "\" />");
         out.write("<span class=\"help-inline\">");
         out.write("of " + totalPages);
         out.write("</span>");
