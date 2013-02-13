@@ -11,7 +11,7 @@
 <%@taglib uri="/WEB-INF/struts-nested.tld" prefix="nested" %>
 <%@ taglib uri="/WEB-INF/tlds/paging-tag.tld" prefix="pg" %>
 
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container-fluid">
             <ul class="nav">

@@ -78,23 +78,28 @@ public class PagingTag extends TagSupport {
     private void printForm(JspWriter out) throws IOException {
    
         out.write("<form class=\"navbar-form pull-right\" action=\"" + action + "\"onsubmit=\"return validatePagingForm(this);\">");
+      
         out.write("<span class=\"help-inline\">");
         out.write("Show");
         out.write("</span>");
+    
         out.write("<input type=\"text\" class=\" span2\" name=\"pageSize\" onblur=\"validate(this)\" size=\"3\" value=\"" + pageSize + "\" />");
-        out.write("<span class=\"help-inline\">");
+    
+        out.write("<span class=\"help-inline \">");
         out.write("items of total" + totalItems);
         out.write("</span>");
-        out.write("<span class=\"help-inline\">");
+       
+        out.write("<span class=\"help-inline \">");
         out.write("Page");
         out.write("</span>");
+       
         out.write("<input type=\"text\" class=\" span2\" name=\"pageNumber\" onblur=\"validate(this)\" size=\"3\" value=\"" + pageNumber + "\" />");
-        out.write("<span class=\"help-inline\">");
+     
+        out.write("<span class=\"help-inline \">");
         out.write("of " + totalPages + "shown");
         out.write("</span>");
+      
         out.write("<input type=\"submit\" class=\"btn\" value=\"GO!\"/>");
         out.write("</form>");
     }
-    
-    
 }

@@ -640,11 +640,11 @@ a.text-error:hover {
 }
 
 .text-info {
-  color: #3a87ad;
+  color: #0000ff;
 }
 
 a.text-info:hover {
-  color: #2d6987;
+  color: #0000ff;
 }
 
 .text-success {
@@ -1554,7 +1554,7 @@ select:focus:required:invalid:focus {
 
 .help-block,
 .help-inline {
-  color: #ffffff;
+  color: #0033cc;
 }
 
 .help-block {

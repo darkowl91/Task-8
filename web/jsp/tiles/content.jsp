@@ -9,6 +9,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-nested" prefix="nested" %>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="/WEB-INF/tlds/paging-tag.tld" prefix="pg" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -53,3 +54,9 @@
             </c:forEach>
         </tbody>
     </table>    
+            
+            <pg:Paging-form pageNumber="${EmployeesForm.pageNumber}"
+                            pageSize="${EmployeesForm.pageSize}" 
+                            totalPages="${EmployeesForm.totalPages}"
+                            totalItems="${EmployeesForm.totalItems}"
+                            action="EmployeeList.do"/>
