@@ -29,7 +29,10 @@ public final class EmployeesForm extends ActionForm {
     }
 
     public void setPageNumber(int pageNumber) {
-        if (pageNumber > totalPages) {
+        long tItems = pageSize * pageNumber;
+        if (tItems > totalItems) {
+            this.pageNumber = 1;
+        } else if (pageNumber > totalPages) {
             this.pageNumber = totalPages;
         } else {
             this.pageNumber = pageNumber;
@@ -79,7 +82,7 @@ public final class EmployeesForm extends ActionForm {
     public void setTotalItems(long totalItems) {
         this.totalItems = totalItems;
     }
-    
+
     @Override
     public void reset(ActionMapping mapping, HttpServletRequest request) {
         this.pageNumber = 1;
