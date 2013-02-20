@@ -13,7 +13,7 @@ import org.hibernate.annotations.BatchSize;
 @BatchSize(size = 100)
 @Table(name = DBConstants.ADDRESS_TABLE)
 public class Address extends PersistentEntity {
-
+//фывфывфыв
     private static final long serialVersionUID = 1L;
     private String street;
     private String building;
