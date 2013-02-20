@@ -66,8 +66,8 @@ public final class JdbcImpl<Entity extends PersistentEntity> implements
                 if (id != resultSet.getInt(DBConstants.IDEMPLOYEE)) {
                     id = resultSet.getInt(DBConstants.IDEMPLOYEE);
                     Employee employee = createEmployee(resultSet);
-                    Work work = createWork(resultSet);
                     HashSet<Work> currentWork = new HashSet<>();
+                    Work work = createWork(resultSet);
                     currentWork.add(work);
                     employee.setWorks(currentWork);
                     employees.add(employee);
@@ -89,27 +89,23 @@ public final class JdbcImpl<Entity extends PersistentEntity> implements
     }
     
     private Employee createEmployee(ResultSet resultSet) throws SQLException {
-        Employee employee = new Employee();
+       Employee employee = new Employee();
         employee.setId(resultSet.getInt(DBConstants.IDEMPLOYEE));
         employee.setFirstName(resultSet.getString(DBConstants.EMPLOYEE_FIRSTNAME));
         employee.setLastName(resultSet.getString(DBConstants.EMPLOYEE_LASTNAME));
-        
         Country country = new Country();
         country.setId(resultSet.getInt(DBConstants.EMPL_IDCOUNTRY));
         country.setTitle(resultSet.getString(DBConstants.EMPL_COUNTRY_TITLE));
-        
         City city = new City();
         city.setId(resultSet.getInt(DBConstants.EMPL_IDCITY));
         city.setTitle(resultSet.getString(DBConstants.EMPL_CITY_TITLE));
         city.setCountry(country);
-        
         Address address = new Address();
         address.setId(resultSet.getInt(DBConstants.EMPL_IDADDRESS));
         address.setStreet(resultSet.getString(DBConstants.EMPL_STREET));
         address.setBuilding(resultSet.getString(DBConstants.EMPL_BUILDING));
         address.setRoom(resultSet.getString(DBConstants.EMPL_ROOM));
         address.setCity(city);
-        
         employee.setAddress(address);
         return employee;
     }
@@ -118,33 +114,27 @@ public final class JdbcImpl<Entity extends PersistentEntity> implements
         Country countryOfOffice = new Country();
         countryOfOffice.setId(resultSet.getInt(DBConstants.OFF_IDCOUNTRY));
         countryOfOffice.setTitle(resultSet.getString(DBConstants.OFF_COUNTRY_TITLE));
-        
         City cityOfOffice = new City();
         cityOfOffice.setId(resultSet.getInt(DBConstants.OFF_IDCITY));
         cityOfOffice.setTitle(resultSet.getString(DBConstants.OFF_CITY_TITLE));
         cityOfOffice.setCountry(countryOfOffice);
-        
         Address addressOfOffice = new Address();
         addressOfOffice.setId(resultSet.getInt(DBConstants.OFF_IDADDRESS));
         addressOfOffice.setStreet(resultSet.getString(DBConstants.OFF_STREET));
         addressOfOffice.setBuilding(resultSet.getString(DBConstants.OFF_BUILDING));
         addressOfOffice.setRoom(resultSet.getString(DBConstants.OFF_ROOM));
         addressOfOffice.setCity(cityOfOffice);
-        
         Company company = new Company();
         company.setId(resultSet.getInt(DBConstants.IDCOMPANY));
         company.setTitle(resultSet.getString(DBConstants.COMPANY_TITLE));
-        
         Office office = new Office();
         office.setId(resultSet.getInt(DBConstants.IDOFFICE));
         office.setAddress(addressOfOffice);
         office.setCompany(company);
         office.setCountOfEmployees(resultSet.getInt(DBConstants.COUNT));
-        
         Position position = new Position();
         position.setId(resultSet.getInt(DBConstants.IDPOSITION));
         position.setTitle(resultSet.getString(DBConstants.POSITION_TITLE));
-        
         Work work = new Work();
         work.setId(resultSet.getInt(DBConstants.IDWORK));
         work.setIdEmployee(resultSet.getInt(DBConstants.IDEMPLOYEE));
@@ -154,11 +144,11 @@ public final class JdbcImpl<Entity extends PersistentEntity> implements
     }
     
     private long getRowCount(Connection connection) throws SQLException {
-        resultSet = null;
+        ResultSet rs = null;
         Statement statement = null;
         statement = connection.createStatement();
-        resultSet = statement.executeQuery(DBQuery.EMPLOYEE_COUNT);
-        resultSet.next();
-        return resultSet.getInt(1);
+        rs = statement.executeQuery(DBQuery.EMPLOYEE_COUNT);
+        rs.next();
+        return rs.getInt(1);
     }
 }
